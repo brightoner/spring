@@ -37,8 +37,8 @@ public class SpringIocBeanScanTest {
 
 		/***Then***/
 		assertNotNull(boardDao);
-		assertEquals("boardDao sayHello", msg);
-		assertEquals(boardDao, boardService.getBoardDao());
+		assertEquals("boardDao sayHello", boardDao.sayHello());
+		assertEquals(boardService.getBoardDao(), boardDao);
 	}
 
 }
