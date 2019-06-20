@@ -13,7 +13,7 @@ import kr.or.ddit.board.dao.IboardDao;
 import kr.or.ddit.board.service.BoardService;
 import kr.or.ddit.board.service.IboardService;
 
-@RunWith(SpringJUnit4ClassRunner)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={ApplicationIocConfig.class})
 public class ApplicationIocConfigTest {
 	
