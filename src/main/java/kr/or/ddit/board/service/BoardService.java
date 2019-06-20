@@ -2,8 +2,10 @@ package kr.or.ddit.board.service;
 
 import javax.annotation.Resource;
 
-import kr.or.ddit.board.dao.IboardDao;
+import org.springframework.stereotype.Service;
 
+import kr.or.ddit.board.dao.IboardDao;
+@Service
 public class BoardService implements IboardService {
 	
 	//filed 명
