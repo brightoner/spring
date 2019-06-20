@@ -8,7 +8,5 @@ public interface IboardService {
 
 	public IboardDao getBoardDao();
 	
-	public String name();
-	
 	
 }

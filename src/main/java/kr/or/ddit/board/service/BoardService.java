@@ -1,12 +1,14 @@
 package kr.or.ddit.board.service;
 
+import javax.annotation.Resource;
+
 import kr.or.ddit.board.dao.IboardDao;
 
 public class BoardService implements IboardService {
 	
 	//filed 명
+	@Resource(name="boardDao")
 	private IboardDao boardDao;
-	
 	private String name;
 	
 
@@ -42,6 +44,12 @@ public class BoardService implements IboardService {
 	@Override
 	public String sayHello() {
 		return boardDao.sayHello();
+	}
+
+	@Override
+	public String name() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
