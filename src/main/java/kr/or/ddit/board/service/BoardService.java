@@ -46,11 +46,7 @@ public class BoardService implements IboardService {
 		return boardDao.sayHello();
 	}
 
-	@Override
-	public String name() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	
 
