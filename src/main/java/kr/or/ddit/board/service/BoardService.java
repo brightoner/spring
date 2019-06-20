@@ -7,6 +7,18 @@ public class BoardService implements IboardService {
 	//filed 명
 	private IboardDao boardDao;
 	
+	private String name;
+	
+
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	//생성자 주입(application-ioc-test.xml 에서)
 	public BoardService(IboardDao boardDao) {
 		this.boardDao = boardDao;
@@ -31,5 +43,9 @@ public class BoardService implements IboardService {
 	public String sayHello() {
 		return boardDao.sayHello();
 	}
+
+	
+
+	
 
 }

@@ -18,6 +18,7 @@
 		<!-- boardService의 filed, property -->
 		<!-- name : 필드명 // value : 값 , ref(레퍼런스) : 참조 (위의 boardDao의 ID값)-->
 		<!--  setter injection -->
+		<property name="name" value="brown"></property>
 		<property name="boardDao" ref="boardDao"></property>
 	</bean>
 	

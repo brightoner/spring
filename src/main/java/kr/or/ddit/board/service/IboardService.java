@@ -7,4 +7,8 @@ public interface IboardService {
 	String sayHello();
 
 	public IboardDao getBoardDao();
+	
+	public String name();
+	
+	
 }
