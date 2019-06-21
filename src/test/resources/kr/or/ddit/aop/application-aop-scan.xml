@@ -16,6 +16,7 @@
 	
 	<aop:aspectj-autoproxy/>
 	
+	<!-- <context:component-scan>을 하면 <context:annotation-config/>을 할 필요가 없다  -->
 	<!-- 빈의 주입을 처리해준다 : @Resource, @AutoWired, @Inject -->	
 	<context:annotation-config/>
 	

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
 
-//<context:annotation-config/> 의 역할을 @Configuration에서 같이 담당
+//<context:annotation-config/> 의 역할을 @ComponentScan에서 같이 담당
 @Configuration
 @ComponentScan(basePackages = {"kr.or.ddit"}, includeFilters = @ComponentScan.Filter(type=FilterType.ANNOTATION, value = Aspect.class))
 @EnableAspectJAutoProxy
