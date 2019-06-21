@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 공통의 관심사항-->
+	<bean id="loggingAspect" class="kr.or.ddit.aop.LoggingAspect"></bean>
+	
+	<!-- 공통의 관시사항 : profilingAspect - service 클래스의 매소드들이 실행될때 메소드의 실행 시간을 구한다 -->
+	<bean id="profilingAspect" class="kr.or.ddit.aop.ProfilingAspect"></bean>
+	
+	<!-- service, dao 불러옴 -->	
+	<!-- @Controller @Service @Repository @Componemt 4가지 어노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
+	<context:component-scan base-package="kr.or.ddit"/>
+	
+	<context:annotation-config/>
+	
+	<aop:config>
+	<!-- 모든서비스 메소드에 대해 loggongApect를 적용하고자 한다
+		 서비스 메소드는 *ServiceImpl.java
+		kr.or.ddit.user.service 
+		kr.or.ddit.board.service 
+		kr.or.ddit.board.manger.service
+		kr.or.ddit.board.member.service
+	-->
+	
+	
+		<!-- 
+			execution : 접근제어자(생략이 가능. srpitn public) public 명시 또는 생략 
+					    반환타입 - 패키지 - 클래스- 매소드- 매소드 인자
+		-->
+		<!--맨앞의 * 매소드 반환타입// ddit와 service사이의 ..은 중간에 패키지가 올수 있기 때문에 -->
+<!-- 	<aop:pointcut id="target" expression="execution(* kr.or.ddit..service.*.*(..))" /> -->
+		<aop:pointcut id="target" expression="within(kr.or.ddit..service.*)" />
+		<aop:aspect ref="loggingAspect">
+			<aop:before pointcut-ref="target" method="before"/>
+			<aop:after pointcut-ref="target" method="after"/>
+			<aop:around pointcut-ref="target" method="around"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="profilingAspect">
+			<aop:around pointcut-ref="target" method="around"/>
+		</aop:aspect>
+		
+		
+		
+	</aop:config>
+
+</beans>
+
+
+
