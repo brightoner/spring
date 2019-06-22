@@ -15,7 +15,7 @@
 	<bean id="boardDaoPrototype" class="kr.or.ddit.board.dao.BoardDao" scope="prototype"/>
 	
 	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
-		<!-- boardService의 filed, property -->
+		<!-- boardService의 feild, property -->
 		<!-- name : 필드명 // value : 값 , ref(레퍼런스) : 참조 (위의 boardDao의 ID값)-->
 		<!--  setter injection -->
 		<property name="name" value="brown"></property>
