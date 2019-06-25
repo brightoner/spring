@@ -34,5 +34,16 @@ public interface IuserService {
 	*/
 	int deleteUser(String userId);
 	
+	
+	/**
+	* Method : getUser
+	* 작성자 : PC22
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 정보조회
+	*/
+	UserVo getUser(String userId);
+	
 
 }

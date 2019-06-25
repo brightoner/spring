@@ -52,4 +52,19 @@ public class UserService implements IuserService {
 		return userDao.deleteUser(userId);
 	}
 
+	/**
+	* Method : getUser
+	* 작성자 : PC22
+	* 변경이력 :
+	* @param userId
+	* @return
+	* Method 설명 : 사용자 정보조회
+	*/
+	@Override
+	public UserVo getUser(String userId) {
+		return userDao.getUser(userId);
+	}
+	
+	
+
 }

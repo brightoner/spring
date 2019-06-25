@@ -16,9 +16,9 @@ import kr.or.ddit.board.service.IboardService;
 @ContextConfiguration("classpath:kr/or/ddit/ioc/application-ioc-st.xml")
 public class SpringIocStTest {
 	
-	@Resource(name="bService")		//application-ioc-st.xml 에서의 bean id값
+	@Resource(name="boardService")		//application-ioc-st.xml 에서의 bean id값
 	private IboardService boardService;
-	@Resource(name="bDao")			//application-ioc-st.xml 에서의 bean id값
+	@Resource(name="boardDao")			//application-ioc-st.xml 에서의 bean id값
 	private IboardDao boardDao;
 
 	@Test

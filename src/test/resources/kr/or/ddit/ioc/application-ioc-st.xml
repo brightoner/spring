@@ -3,11 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="bDao" class="kr.or.ddit.board.dao.BoardDao"/>
+	<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
 	
-	<bean id="bService" class="kr.or.ddit.board.service.BoardService">
+	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
 	<!-- value : 값 , ref(레퍼런스) : 참조 (위의 boardDao의 ID값)-->
-		<property name="boardDao" ref="bDao"></property>
+		<property name="boardDao" ref="boardDao"/>
 	</bean>
 
 

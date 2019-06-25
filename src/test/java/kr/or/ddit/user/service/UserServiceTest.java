@@ -82,5 +82,25 @@ public class UserServiceTest extends LogicTestEnv{
 
 	}
 	
+	/**
+	* Method : getUserTest
+	* 작성자 : PC22
+	* 변경이력 :
+	* Method 설명 : 사용자 정보 조회 테스트
+	*/
+	@Test
+	public void getUserTest() {
+		/***Given***/
+		String userId ="brown";
+
+		/***When***/
+		UserVo userVo = userService.getUser(userId);
+
+		/***Then***/
+		assertEquals("브라운", userVo.getName());
+		assertEquals("곰", userVo.getAlias());
+	}
+	
+	
 
 }
