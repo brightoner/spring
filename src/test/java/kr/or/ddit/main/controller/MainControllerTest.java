@@ -11,6 +11,8 @@ import java.util.jar.Attributes.Name;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +37,8 @@ import kr.or.ddit.testenv.ControllerTestEnv;
 //applicationContext --> 웹환경의 applicationContext 생성
 @WebAppConfiguration
 public class MainControllerTest extends ControllerTestEnv{
+	
+	private static final Logger logger = LoggerFactory.getLogger(MainControllerTest.class);
 
 	//@Autowired 는 타입이 같은것을 검색!! 단 하나만 존재해야한다
 	//	ex) IuserDao 를 UserDao 한개만 implement하면 가능하지만, UserDao2도 존재하면 사용X
@@ -73,6 +79,8 @@ public class MainControllerTest extends ControllerTestEnv{
 		/***Then***/
 		assertEquals("main", viewName);
 		assertEquals("brown", userId);
+		assertNotNull(mav.getModel().get("rangers"));
+		assertNotNull(mav.getModel().get("userVo"));
 		
 	}
 	
@@ -86,14 +94,86 @@ public class MainControllerTest extends ControllerTestEnv{
 		mockMvc.perform(get("/main"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("main"))
-				.andExpect(model()
-				.attribute("mainUserId", "brown"));
+				.andExpect(model().attribute("mainUserId", "brown"))
+				.andExpect(model().attributeExists("rangers"))
+				.andExpect(model().attributeExists("userVo"));
+				
 									 
 		/***Then***/
 		
-		
+	}
 	
+	/**
+	* Method : mainViewMavTest
+	* 작성자 : PC22
+	* 변경이력 :
+	* Method 설명 : ModelAndView객체를 이용한 main페이지 요청 테스트
+	 * @throws Exception 
+	*/
+	@Test
+	public void mainViewMavTest() throws Exception {
+		/***Given***/
+
+		/***When***/
+		MvcResult mvcResult = mockMvc.perform(get("/mainMav")).andReturn();
+		ModelAndView mav = mvcResult.getModelAndView();
+
+		/***Then***/
+		//viewName 이 기대하는 문자열로 리턴되는지
+		assertEquals("main", mav.getViewName());
 		
+		logger.debug("mav.getModel :{}", mav.getModel());
+		
+		//model객체에 controller에서 설정한 속성이 있는지
+		assertEquals("brown", mav.getModel().get("mainUserId"));
+		//@RequestMapping("/mainMav")전에 @ModelAttribute("rangers")가 먼저 실행되서 rangers값이 들어간다
+		assertNotNull(mav.getModel().get("rangers"));
+		
+	}
+	
+	/**
+	* Method : pathVariableTest
+	* 작성자 : PC22
+	* 변경이력 :
+	* Method 설명 : @PathVariable 테스트
+	 * @throws Exception 
+	*/
+	@Test
+	public void pathVariableTest() throws Exception {
+	
+		mockMvc.perform(get("/main/pathvariable/brown"))
+					.andExpect(status().isOk())
+					.andExpect(view().name("main"));
+	}
+	
+	/**
+	* Method : pathVariableTest
+	* 작성자 : PC22
+	* 변경이력 :
+	* Method 설명 : @PathVariable 테스트
+	 * @throws Exception 
+	*/
+	@Test
+	public void pathVariableTest2() throws Exception {
+		
+		mockMvc.perform(get("/main/pathvariable/sally"))
+					.andExpect(status().is(200))
+					.andExpect(view().name("main"));
+	}
+	
+	/**
+	* Method : requestHeaferTest
+	* 작성자 : PC22
+	* 변경이력 :
+	* @throws Exception
+	* Method 설명 : @RequestHeafer test
+	*/
+	@Test
+	public void requestHeaferTest() throws Exception {
+		
+		mockMvc.perform(get("/main/header").accept("text/html"))
+					.andExpect(status().isOk())
+					.andExpect(view().name("main"));
 	}
 	
 	

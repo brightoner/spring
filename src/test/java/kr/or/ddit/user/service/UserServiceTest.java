@@ -7,11 +7,13 @@ import static org.junit.Assert.assertTrue;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import kr.or.ddit.paging.model.PageVo;
 import kr.or.ddit.testenv.LogicTestEnv;
 import kr.or.ddit.user.model.UserVo;
 
@@ -100,6 +102,55 @@ public class UserServiceTest extends LogicTestEnv{
 		assertEquals("브라운", userVo.getName());
 		assertEquals("곰", userVo.getAlias());
 	}
+	
+	@Test
+	public void updataDataUserTest(){
+		/***Given***/
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		UserVo userVo = null;
+		
+		try {
+			userVo = new UserVo("더덕인", "userTest", "중앙로", "userTest1234", "대전광역시 중구 중앙로76", "영민빌딩 2층 204호", "34940", sdf.parse("2019-05-31"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+
+		/***When***/
+		int updateDataUser = userService.updateDataUser(userVo);
+
+		/***Then***/
+		assertEquals(1, updateDataUser);
+	}
+	
+	/**
+	* Method : userPagingListTest
+	* 작성자 : PC22
+	* 변경이력 :
+	* Method 설명 : 사용자 페이징 리스트 조회 테스트
+	*/
+	@Test
+	public void userPagingListTest(){
+		/***Given***/
+		PageVo pageVo = new PageVo(1, 10);
+		
+		/***When***/
+		Map<String, Object> resultMap = userService.userPagingList(pageVo);
+		List<UserVo> userList = (List<UserVo>) resultMap.get("userList");
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+
+		/***Then***/
+		
+		//pageingList assert
+		assertNotNull(userList);
+		assertEquals(10, userList.size());
+		
+		//paginationSize assert
+		assertEquals(12, paginationSize);
+		
+	}
+	
 	
 	
 
