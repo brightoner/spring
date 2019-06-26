@@ -37,7 +37,7 @@
             <div class="row">
                <div class="col-sm-8 blog-main">
                   <h2 class="sub-header">사용자 상세</h2>
-                  <form class="form-horizontal" role="form" action="${cp }/userModify" method="get">
+                  <form class="form-horizontal" role="form" action="${cp }/user/modify" method="get">
                            <input type="hidden" class="form-control" id="userId" name="userId" placeholder="사용자 아이디" value="${userVo.userId }">
 					<div class="form-group">
                         <label for="userNm" class="col-sm-2 control-label">사용자 사진</label>

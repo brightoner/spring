@@ -65,7 +65,7 @@ $(document).ready(function(){
 						<h2 class="sub-header">사용자 페이징리스트</h2>
 						
 						<!-- 사용자 상세 조회 : userId가 필요-->
-						<form id="frm" action="${cp }/user" method="get">
+						<form id="frm" action="${cp }/user/user" method="get">
 							<input type="hidden" id="userId" name="userId"/>
 						</form>
 						
@@ -103,7 +103,7 @@ $(document).ready(function(){
 							</table>
 						</div>
 
-						<a href="${cp }/userForm" class="btn btn-default pull-right">사용자 등록</a>
+						<a href="${cp }/user/form" class="btn btn-default pull-right">사용자 등록</a>
 
 						<!-- 사용자 수 : 105건 // 페이지 네이션 : 11건 -->
 						<div class="text-center">
@@ -114,7 +114,7 @@ $(document).ready(function(){
 										<li class="disabled"><span>«</span></li>
 									</c:when>
 									<c:otherwise>
-										<li><a href="${cp}/userPagingList?page=${pageVo.page - 1}&pageSize=${pageVo.pageSize}">«</a></li>
+										<li><a href="${cp}/user/pagingList?page=${pageVo.page - 1}&pageSize=${pageVo.pageSize}">«</a></li>
 									</c:otherwise>
 								</c:choose>
 						
@@ -127,7 +127,7 @@ $(document).ready(function(){
 								</c:when>
 								<c:otherwise>
 									<li>
-									 	<a href="${cp }/userPagingList?page=${i }&pageSize=${pageVo.pageSize }">${i }</a>
+									 	<a href="${cp }/user/pagingList?page=${i }&pageSize=${pageVo.pageSize }">${i }</a>
 									 <li>
 								</c:otherwise>
 							</c:choose>
@@ -138,7 +138,7 @@ $(document).ready(function(){
 									<li class="disabled"><span>»</span></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="${cp}/userPagingList?page=${pageVo.page + 1}&pageSize=${pageVo.pageSize}">»</a></li>
+									<li><a href="${cp}/user/pagingList?page=${pageVo.page + 1}&pageSize=${pageVo.pageSize}">»</a></li>
 								</c:otherwise>
 							</c:choose>
 							

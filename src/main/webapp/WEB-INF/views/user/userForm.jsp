@@ -56,7 +56,7 @@ $(document).ready(function(){
 	});
 	
 	//개발용 데이터 초기화 함수 -- 추후 지울것!!!!!!!
-	//dateInit();
+// 	dateInit();
 	
 });
 
@@ -89,7 +89,7 @@ function dateInit(){
             <div class="row">
                <div class="col-sm-8 blog-main">
                   <h2 class="sub-header">사용자 등록</h2>
-                  <form id="frm" class="form-horizontal" role="form" action="${cp }/userForm" method="post" enctype="multipart/form-data">
+                  <form id="frm" class="form-horizontal" role="form" action="${cp }/user/form" method="post" enctype="multipart/form-data">
 					
 					<div class="form-group">
                         <label for="userNm" class="col-sm-2 control-label">사용자 사진</label>

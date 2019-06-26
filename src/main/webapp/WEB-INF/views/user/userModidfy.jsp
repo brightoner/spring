@@ -90,7 +90,7 @@ function dateInit(){
             <div class="row">
                <div class="col-sm-8 blog-main">
                   <h2 class="sub-header">사용자 수정</h2>
-                  <form id="frm" class="form-horizontal" role="form" action="${cp }/userModify" method="post" enctype="multipart/form-data">
+                  <form id="frm" class="form-horizontal" role="form" action="${cp }/user/modify" method="post" enctype="multipart/form-data">
 					
 					<div class="form-group">
                         <label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
@@ -151,12 +151,12 @@ function dateInit(){
                         </div>
                      </div>
                      
-                      <div class="form-group">
-                        <label for="pass" class="col-sm-2 control-label">비밀번호</label>
-                        <div class="col-sm-10">
-                           <input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호" value="${userVo.pass }">
-                        </div>
-                     </div>
+<!--                       <div class="form-group"> -->
+<!--                         <label for="pass" class="col-sm-2 control-label">비밀번호</label> -->
+<!--                         <div class="col-sm-10"> -->
+<%--                            <input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호" value="${userVo.pass }"> --%>
+<!--                         </div> -->
+<!--                      </div> -->
       
                      <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
