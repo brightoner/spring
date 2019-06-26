@@ -64,7 +64,6 @@
 		update users
 		set name = #{name}
 		   ,alias = #{alias}
-		   ,pass = #{pass}
 		   ,addr1 = #{addr1}
 		   ,addr2 = #{addr2}
 		   ,zipcd = #{zipcd}
