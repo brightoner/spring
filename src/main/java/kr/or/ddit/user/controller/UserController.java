@@ -48,15 +48,7 @@ public class UserController {
 	*/
 	@RequestMapping("/list")
 	public String userList(Model model) {
-		/*
-		  //jsp
-			protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//userList객체를 userList.jsp에서 참고할수 있도록 request객체에 속성으로 넘겨준다
-			request.setAttribute("userList", userService.userList());
-			//userList객체를 이용하여 사용자 화면을 생성하는 jsp
-			request.getRequestDispatcher("/user/userList.jsp").forward(request, response);
-		}
-		*/
+		
 		model.addAttribute("userList", userService.userList());
 		
 		return "user/userList";

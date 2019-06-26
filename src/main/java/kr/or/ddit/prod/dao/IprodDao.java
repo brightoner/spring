@@ -22,7 +22,7 @@ public interface IprodDao {
 	* 변경이력 :
 	* @param pageVo
 	* @return
-	* Method 설명 :prod 체이징 리스트 조회
+	* Method 설명 :prod 페이징 리스트 조회
 	*/
 	List<ProdVo> prodPagingList(PageVo pageVo);
 	
