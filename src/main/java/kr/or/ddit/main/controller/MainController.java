@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.ddit.main.model.MainVo;
 import kr.or.ddit.user.model.UserVo;
 
 /*
@@ -152,6 +154,44 @@ public class MainController {
 	public String header(@RequestHeader(name = "Accept"/*, required = false*/) String accept) {
 		
 		logger.debug("Accept:{}", accept);
+		
+		return "main";
+	}
+	
+	
+	@RequestMapping("/main/view")
+	public String view() {
+		
+		return "view";
+	}
+	
+	
+	//복수 parameter 받기(userId,name), 중첩된 parameter 받기(addr)
+	//List<>타입은 @RequestParam적용
+	@RequestMapping("/main/process")
+	public String process(HttpServletRequest request, String[] userId, 
+						@RequestParam("userId")List<String> userIdList, 
+						String[] name, 		//@RequestParam("name")List<String> name, 
+						MainVo mainVo) {
+		
+		String[] userIdArr = request.getParameterValues("userId");
+	
+		String userIdParameter = request.getParameter("userId");   //첫번째 값이 나온다
+		logger.debug("userIdParameter :{}", userIdParameter);
+		
+		logger.debug("request.getParameterValues(\"userId\")");
+		for(String u : userIdArr)
+			logger.debug("userId : {}", u);
+		
+		logger.debug("String[] userId");
+		for(String u : userId)
+			logger.debug("userId :{}", u);
+		
+		logger.debug("userIdList");
+		for(String u : userIdList)
+			logger.debug("userIdList :{}", u);
+		
+		logger.debug("mainVo :{}", mainVo);
 		
 		return "main";
 	}
