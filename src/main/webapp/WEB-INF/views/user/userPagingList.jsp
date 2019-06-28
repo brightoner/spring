@@ -103,7 +103,12 @@ $(document).ready(function(){
 							</table>
 						</div>
 
-						<a href="${cp }/user/form" class="btn btn-default pull-right">사용자 등록</a>
+						<a href="${cp }/user/form" class="btn btn-default pull-right">사용자 등록</a><br>
+						
+						<form action="${cp }/user/userListExcel">
+							 <input type="hidden" class="form-control" id="filename" name="filename"  value="userList">
+							<input type="submit" value="엑셀다운">
+						</form>
 
 						<!-- 사용자 수 : 105건 // 페이지 네이션 : 11건 -->
 						<div class="text-center">
@@ -144,6 +149,7 @@ $(document).ready(function(){
 							
 							
 							</ul>
+						
 						</div>
 					</div>
 				</div>

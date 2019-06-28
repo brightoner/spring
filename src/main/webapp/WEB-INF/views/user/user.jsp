@@ -23,12 +23,12 @@
 <!-- css, js -->
 <%@include file="/WEB-INF/views/common/basicLib.jsp"%>
 
-<script>
-$(document).ready(function() {
-   var msg = '${msg}';
-   if(msg !='')
-      alert(msg);
-});
+<script >
+$(document).ready(function(){
+	   <c:if test="${not empty msg}">
+	      alert("${msg}");
+	   </c:if>
+	})
 </script>
 
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 					<div class="form-group">
                         <label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
                         <div class="col-sm-10">
-                           <img src="${cp}/profile?userId=${userVo.userId}" ></img>
+                           <img src="${cp}/user/profile?userId=${userVo.userId}" />
                         </div>
                      </div>
       
