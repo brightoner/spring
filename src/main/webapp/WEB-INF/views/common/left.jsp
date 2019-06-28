@@ -5,6 +5,8 @@
 		<li class="active"><a href="${cp }/main">Main<span class="sr-only">(current)</span></a></li>
 		<li class="active"><a href="${cp }/user/list">사용자리스트</a></li>
 		<li class="active"><a href="${cp }/user/pagingList">사용자페이징리스트</a></li>
+		<li class="active"><a href="${cp }/user/pagingListAjaxView">사용자페이징리스트(ajax)</a></li>
+		
 		<li class="active"><a href="${cp }/lprod/pagingList">LPROD페이징리스트</a></li>
 		<li class="active"><a href="${cp }/prod/pagingList">PROD페이징리스트</a></li>
 	</ul>
