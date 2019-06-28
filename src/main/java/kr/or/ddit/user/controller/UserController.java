@@ -79,6 +79,7 @@ public class UserController {
 		header.add("zipcd");
 		header.add("birthStr");
 		
+		filename = filename == null ? "excel" : filename;
 		model.addAttribute("filename", filename);
 		model.addAttribute("header", header);
 		model.addAttribute("data", userService.userList());
