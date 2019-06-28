@@ -116,7 +116,8 @@ public class UserController {
 		model.addAttribute("paginationSize",paginationSize);
 		model.addAttribute("pageVo", pageVo);
 		
-		return "user/userPagingList";
+//		return "user/userPagingList";
+		return "tiles.userPagingList";
 	}
 	
 	
@@ -364,7 +365,7 @@ public class UserController {
 //		model.addAttribute("userVo", userVo);
 		model.addAttribute("userVo", userService.getUser(userId));
 		
-		return "user/userModidfy";
+		return "user/userModify";
 	}
 	
 	//사용자정보수정
