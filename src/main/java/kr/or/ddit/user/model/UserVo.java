@@ -5,9 +5,11 @@ import java.util.Date;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@XmlRootElement(name="userVo")
 public class UserVo {
 	
 	private String name;
