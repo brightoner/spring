@@ -63,7 +63,7 @@ public class LoginController {
 			
 			session.setAttribute("USER_INFO", userVo);
 			
-			return "main";
+			return "tiles.main";
 		}
 		else
 			return "login/login";
