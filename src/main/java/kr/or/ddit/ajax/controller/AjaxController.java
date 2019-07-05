@@ -100,7 +100,7 @@ public class AjaxController {
 	@RequestMapping(path = "/requestBody",
 					/* method = {RequestMethod.POST},*/
 					consumes = {"application/json"},		// consumes : content-type을 제한, 안쓰면 모든형식 받음
-					produces = {"application/json", "application/xml"} 	//produces : 메소드가 생성 가능한 타입(accept헤더를 보고 판단)
+					produces = {"application/json", "application/xml"} 	//produces : Accept헤더 제한, 메소드가 생성 가능한 타입(accept헤더를 보고 판단)
 					)
 	@ResponseBody
 	public UserVo requestBody(@RequestBody UserVo userVo) {
