@@ -12,7 +12,7 @@
 	<!-- @Controller, @Service, @Repository, @Componemt 4가지 어노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
 	<!-- test코드 오류 수정 - 방법1 : 더 쉬움-->
 	<!-- exclude ==>   @Controller 배제-->
-	<context:component-scan base-package="kr.or.ddit">
+	<context:component-scan base-package="kr.or.ddit.board, kr.or.ddit.aop">
 		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>

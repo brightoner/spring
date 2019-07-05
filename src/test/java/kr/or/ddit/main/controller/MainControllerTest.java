@@ -28,14 +28,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.ddit.testenv.ControllerTestEnv;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:kr/or/ddit/config/spring/application-context.xml",
-						"classpath:kr/or/ddit/config/spring/root-context.xml",
-						"classpath:kr/or/ddit/config/spring/application-datasource-dev.xml",
-						"classpath:kr/or/ddit/config/spring/application-transaction.xml"})
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration({"classpath:kr/or/ddit/config/spring/application-context.xml",
+//						"classpath:kr/or/ddit/config/spring/root-context.xml",
+//						"classpath:kr/or/ddit/config/spring/application-datasource-dev.xml",
+//						"classpath:kr/or/ddit/config/spring/application-transaction.xml"})
 //일반자바환경 --> 웹환경
 //applicationContext --> 웹환경의 applicationContext 생성
-@WebAppConfiguration
 public class MainControllerTest extends ControllerTestEnv{
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainControllerTest.class);
