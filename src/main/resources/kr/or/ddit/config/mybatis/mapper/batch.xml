@@ -5,24 +5,54 @@
 <mapper namespace="batch">
 
 	<select id="getCycleList" resultType="cycleVo">
-		select * 
+		select *
 		from cycle
 	</select>
-	
+
 	<insert id="mergeDaily" parameterType="dailyVo">
 		merge into daily
-			using dual on(
-				daily.pid = #{pid} and
-				daily.cid = #{cid} and
-				daily.dt = #{dt} 
-				)
-			when matched then update set
-				cnt = #{cnt}	
-			when not matched then insert
-				(pid, cid, dt, cnt)
-				values(#{pid}, #{cid}, #{dt}, #{cnt})
+		using dual on(
+		daily.pid = #{pid} and
+		daily.cid = #{cid} and
+		daily.dt = #{dt}
+		)
+		when matched then update set
+		cnt = #{cnt}
+		when not matched then insert
+		(pid, cid, dt, cnt)
+		values(#{pid}, #{cid}, #{dt}, #{cnt})
+	</insert>
+
+	<delete id="deleteDaily" parameterType="string">
+		delete daily
+		where dt like #{ym} || '%'
+	</delete>
+
+	<insert id="createDaily" parameterType="string">
+		insert into daily
+		SELECT
+		cycle.cid, cycle.pid, cal.dt, cycle.cnt
+		FROM CYCLE,
+		(select to_char( TO_DATE(#{ym},'yyyyMM') + (level-1), 'yyyyMMdd') dt,
+			to_char( TO_DATE(#{ym},'yyyyMM') + (level-1), 'd') day
+		from dual 
+		connect by level &lt;=LAST_DAY(TO_DATE(#{ym},'yyyyMM'))-TO_DATE(#{ym},'yyyyMM')+1) cal
+		where cycle.day = cal.day
+		order by cycle.cid, cycle.pid, cal.dt
+	</insert>
+
+	<insert id="insertBatch" parameterType="batchVo">
+		<selectKey keyColumn="bid" keyProperty="bid" resultType="int" order="BEFORE">
+			select seq_batch.nextval bid from dual
+		</selectKey>
+		insert into batch values (#{bid}, #{bcd}, #{st}, sysdate, null)
 	</insert>
 	
+	<update id="updateBatch" parameterType="batchVo">
+		update batch set st = #{st}, 
+						 ed_dt =sysdate
+		where bid = #{bid}
+	</update>
 
 
 </mapper>
